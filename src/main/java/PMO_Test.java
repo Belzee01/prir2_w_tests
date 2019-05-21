@@ -325,7 +325,7 @@ public class PMO_Test {
 
 		prepare(pciRandom, tciRandom, PMO_Consts.FAST_WORK_THREADS, randomGenerator);
 
-		assertTimeout(ofSeconds(PMO_Consts.VALUES_TEST_TIME + 5 * PMO_Consts.NORMAL_WORK_DELAY), () -> {
+		assertTimeout(ofMillis(PMO_Consts.VALUES_TEST_TIME + 5 * PMO_Consts.NORMAL_WORK_DELAY), () -> {
 			tciRandom.start();
 			PMO_TimeHelper.sleep(PMO_Consts.VALUES_TEST_TIME);
 			tciRandom.suspend();
@@ -333,7 +333,7 @@ public class PMO_Test {
 		long sum1 = randomGenerator.getSum();
 
 		for (int i = 0; i < PMO_Consts.RESUME_REPETITIONS; i++)
-			assertTimeout(ofSeconds(PMO_Consts.RESUME_TEST_TIME + 5 * PMO_Consts.NORMAL_WORK_DELAY), () -> {
+			assertTimeout(ofMillis(PMO_Consts.RESUME_TEST_TIME + 5 * PMO_Consts.NORMAL_WORK_DELAY), () -> {
 				tciRandom.resume();
 				PMO_TimeHelper.sleep(PMO_Consts.RESUME_TEST_TIME);
 				tciRandom.suspend();
